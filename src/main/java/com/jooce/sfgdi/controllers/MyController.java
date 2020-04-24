@@ -1,14 +1,18 @@
 package com.jooce.sfgdi.controllers;
 
-import org.springframework.context.annotation.Conditional;
+import com.jooce.sfgdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("Hi");
+    private final GreetingService greetingService;
 
-        return "Hi";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello() {
+        return greetingService.sayGreeting();
     }
 }
